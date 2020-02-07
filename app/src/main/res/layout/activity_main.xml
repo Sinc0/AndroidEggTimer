@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/browneggs2642201"
     tools:context=".MainActivity">
+    <!-- android:background="@drawable/browneggs2642201" -->
 
     <SeekBar
         android:id="@+id/seekBarAlarmTime"
@@ -36,47 +36,70 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:background="#E0DADA"
         android:onClick="onClickStartAlarm"
         android:text="Timer"
+        android:textColor="@android:color/black"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCounter" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonStartAlarmRare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="#E0DADA"
         android:onClick="onClickStartAlarmRare"
         android:text="Rare"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonStartAlarm" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonStartAlarmMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="#E0DADA"
         android:onClick="onClickStartAlarmMedium"
         android:text="Medium"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonStartAlarmRare" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonStartAlarmHard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:onClick="onClickStartAlarmWellDone"
+        android:background="#E0DADA"
+        android:onClick="onClickStartHard"
         android:text="Hard"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonStartAlarmMedium" />
+
+    <TextView
+        android:id="@+id/textViewSoundOnOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="onClicktextViewSoundOnOff"
+        android:text="Sound is On"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
