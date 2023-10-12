@@ -1,5 +1,7 @@
+//namespace
 package android.example.eggtimer;
 
+//includes
 import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -12,32 +14,22 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ImageView;
 
+//main class
 public class MainActivity extends AppCompatActivity {
-
-    //TextViews
+    //variables
     TextView textViewCounter;
     TextView textViewSoundOnOff;
-
-    //SeekBars
     SeekBar seekBarAlarmTime;
-
-    //Buttons
     Button buttonStartAlarm;
     Button buttonStartAlarmRare;
     Button buttonStartAlarmMedium;
     Button buttonStartAlarmHard;
-
-    //Timers
     CountDownTimer timer;
-
-    //MediaPlayers
     MediaPlayer mp;
-
-    //General
     Boolean counterIsActive = false;
     Boolean soundOn = true;
 
-    //General functions
+    //functions
     public void resetTimer()
     {
         textViewCounter.setText("0:00");
@@ -56,26 +48,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateTimer(int secondsLeft)
     {
-
+        //variables
         int minutes = secondsLeft / 60;
         int seconds = secondsLeft - (minutes * 60);
         String m = Integer.toString(minutes);
         String s = Integer.toString(seconds);
 
-        if (s.length() == 1)
-        {
-            s = "0" + s;
-        }
-
+        if (s.length() == 1) { s = "0" + s; }
 
         textViewCounter.setText(m + ":" + s);
-
         seekBarAlarmTime.setProgress(secondsLeft);
     }
 
-    //onClick functions
     public void onClicktextViewSoundOnOff(View view)
     {
+        //debug
         Log.i("Tag", "Clicked");
 
         if (soundOn == true)
@@ -84,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
             textViewSoundOnOff.setText("Sound is Off");
             soundOn = false;
         }
-
         else if (soundOn == false)
         {
             textViewSoundOnOff.setText("Sound is On");
@@ -95,13 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickStartAlarm(View view)
     {
-        if (counterIsActive == true)
-        {
-
-            resetTimer();
-
-        }
-
+        if (counterIsActive == true) { resetTimer();}
         else
         {
             getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
@@ -114,21 +94,15 @@ public class MainActivity extends AppCompatActivity {
             buttonStartAlarmHard.setBackgroundColor(Color.rgb(224, 218, 218));
 
             timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-
+                @Override public void onTick(long millisUntilFinished) {
                     updateTimer((int) millisUntilFinished / 1000);
-
                 }
 
-                @Override
-                public void onFinish() {
-
+                @Override public void onFinish() {
                     mp = MediaPlayer.create(getApplicationContext(), R.raw.alarmsound);
                     mp.start();
                     resetTimer();
                     Log.i("Tag:", "Alarm Finished");
-
                 }
             };
 
@@ -138,13 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickStartAlarmRare(View view)
     {
-        if (counterIsActive == true)
-        {
-
-            resetTimer();
-
-        }
-
+        if (counterIsActive == true) { resetTimer(); }
         else
         {
             getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201goldorange);
@@ -158,21 +126,15 @@ public class MainActivity extends AppCompatActivity {
             seekBarAlarmTime.setProgress(180);
 
             timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-
+                @Override public void onTick(long millisUntilFinished) {
                     updateTimer((int) millisUntilFinished / 1000);
-
                 }
 
-                @Override
-                public void onFinish() {
-
+                @Override public void onFinish() {
                     mp = MediaPlayer.create(getApplicationContext(), R.raw.alarmsound);
                     mp.start();
                     resetTimer();
                     Log.i("Tag:", "Alarm Finished");
-
                 }
             };
 
@@ -182,13 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickStartAlarmMedium(View view)
     {
-        if (counterIsActive == true)
-        {
-
-            resetTimer();
-
-        }
-
+        if (counterIsActive == true) { resetTimer(); }
         else
         {
             getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201summertime);
@@ -202,21 +158,15 @@ public class MainActivity extends AppCompatActivity {
             seekBarAlarmTime.setProgress(300);
 
             timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-
+                @Override public void onTick(long millisUntilFinished) {
                     updateTimer((int) millisUntilFinished / 1000);
-
                 }
 
-                @Override
-                public void onFinish() {
-
+                @Override public void onFinish() {
                     mp = MediaPlayer.create(getApplicationContext(), R.raw.alarmsound);
                     mp.start();
                     resetTimer();
                     Log.i("Tag:", "Alarm Finished");
-
                 }
             };
 
@@ -225,12 +175,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickStartHard(View view) {
-        if (counterIsActive == true) {
-
-            resetTimer();
-
-        }
-
+        if (counterIsActive == true) { resetTimer();}
         else
         {
             getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201moonlight);
@@ -246,19 +191,15 @@ public class MainActivity extends AppCompatActivity {
             timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
-
                     updateTimer((int) millisUntilFinished / 1000);
-
                 }
 
                 @Override
                 public void onFinish() {
-
                     mp = MediaPlayer.create(getApplicationContext(), R.raw.alarmsound);
                     mp.start();
                     resetTimer();
                     Log.i("Tag:", "Alarm Finished");
-
                 }
             };
 
@@ -266,17 +207,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Main
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        //set startup activity
         setContentView(R.layout.activity_main);
 
         //set backgrounds
-        //getWindow().getDecorView().setBackgroundColor(Color.WHITE);
         getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
+        //getWindow().getDecorView().setBackgroundColor(Color.WHITE);
 
+        //variables
         seekBarAlarmTime = findViewById(R.id.seekBarAlarmTime);
         textViewCounter = findViewById(R.id.textViewCounter);
         textViewSoundOnOff = findViewById(R.id.textViewSoundOnOff);
@@ -285,31 +228,20 @@ public class MainActivity extends AppCompatActivity {
         buttonStartAlarmMedium = findViewById(R.id.buttonStartAlarmMedium);
         buttonStartAlarmHard = findViewById(R.id.buttonStartAlarmHard);
 
-        //SeekBar settings
+        //set seekbar settings
         seekBarAlarmTime.setMax(600);
         seekBarAlarmTime.setProgress(0);
-
         seekBarAlarmTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
             {
-
                 updateTimer(progress);
-
             }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar)
-            {
+            @Override public void onStartTrackingTouch(SeekBar seekBar) { }
 
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar)
-            {
-
-            }
+            @Override public void onStopTrackingTouch(SeekBar seekBar) { }
         });
     }
 }
