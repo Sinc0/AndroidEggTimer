@@ -33,17 +33,22 @@ public class MainActivity extends AppCompatActivity {
     public void resetTimer()
     {
         textViewCounter.setText("0:00");
+
         seekBarAlarmTime.setEnabled(true);
+
         timer.cancel();
+
         seekBarAlarmTime.setProgress(0);
+
         buttonStartAlarm.setText("Start");
-        getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
+        //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
+
         buttonStartAlarm.setBackgroundColor(Color.rgb(224, 218, 218));
         buttonStartAlarmRare.setBackgroundColor(Color.rgb(224, 218, 218));
         buttonStartAlarmMedium.setBackgroundColor(Color.rgb(224, 218, 218));
         buttonStartAlarmHard.setBackgroundColor(Color.rgb(224, 218, 218));
-        counterIsActive = false;
 
+        counterIsActive = false;
     }
 
     public void updateTimer(int secondsLeft)
@@ -54,9 +59,13 @@ public class MainActivity extends AppCompatActivity {
         String m = Integer.toString(minutes);
         String s = Integer.toString(seconds);
 
-        if (s.length() == 1) { s = "0" + s; }
+        if (s.length() == 1)
+        {
+            s = "0" + s;
+        }
 
         textViewCounter.setText(m + ":" + s);
+
         seekBarAlarmTime.setProgress(secondsLeft);
     }
 
@@ -81,13 +90,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickStartAlarm(View view)
     {
-        if (counterIsActive == true) { resetTimer();}
+        if (counterIsActive == true)
+        {
+            resetTimer();
+        }
         else
         {
-            getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
+            //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
             counterIsActive = true;
+
             seekBarAlarmTime.setEnabled(false);
+
             buttonStartAlarm.setText("Stop");
+
             buttonStartAlarm.setBackgroundColor(Color.GRAY);
             buttonStartAlarmRare.setBackgroundColor(Color.rgb(224, 218, 218));
             buttonStartAlarmMedium.setBackgroundColor(Color.rgb(224, 218, 218));
@@ -112,17 +127,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickStartAlarmRare(View view)
     {
-        if (counterIsActive == true) { resetTimer(); }
+        if (counterIsActive == true)
+        {
+            resetTimer();
+        }
         else
         {
-            getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201goldorange);
+            //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201goldorange);
             counterIsActive = true;
+
             seekBarAlarmTime.setEnabled(false);
+
             buttonStartAlarm.setText("Stop");
+
             buttonStartAlarm.setBackgroundColor(Color.rgb(224, 218, 218));
             buttonStartAlarmRare.setBackgroundColor(Color.GRAY);
             buttonStartAlarmMedium.setBackgroundColor(Color.rgb(224, 218, 218));
             buttonStartAlarmHard.setBackgroundColor(Color.rgb(224, 218, 218));
+
             seekBarAlarmTime.setProgress(180);
 
             timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
@@ -144,17 +166,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickStartAlarmMedium(View view)
     {
-        if (counterIsActive == true) { resetTimer(); }
+        if (counterIsActive == true)
+        {
+            resetTimer();
+        }
         else
         {
-            getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201summertime);
+            //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201summertime);
             counterIsActive = true;
+
             seekBarAlarmTime.setEnabled(false);
+
             buttonStartAlarm.setText("Stop");
+
             buttonStartAlarm.setBackgroundColor(Color.rgb(224, 218, 218));
             buttonStartAlarmRare.setBackgroundColor(Color.rgb(224, 218, 218));
             buttonStartAlarmMedium.setBackgroundColor(Color.GRAY);
             buttonStartAlarmHard.setBackgroundColor(Color.rgb(224, 218, 218));
+
             seekBarAlarmTime.setProgress(300);
 
             timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
@@ -175,27 +204,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickStartHard(View view) {
-        if (counterIsActive == true) { resetTimer();}
+        if (counterIsActive == true)
+        {
+            resetTimer();
+        }
         else
         {
-            getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201moonlight);
+            //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201moonlight);
+
             counterIsActive = true;
+
             seekBarAlarmTime.setEnabled(false);
+
             buttonStartAlarm.setText("Stop");
-            buttonStartAlarm.setBackgroundColor(Color.rgb(224, 218, 218));
-            buttonStartAlarmRare.setBackgroundColor(Color.rgb(224, 218, 218));
-            buttonStartAlarmMedium.setBackgroundColor(Color.rgb(224, 218, 218));
+
+            buttonStartAlarm.setBackgroundColor(Color.rgb(118, 118, 118));
+            buttonStartAlarmRare.setBackgroundColor(Color.rgb(42, 42, 42));
+            buttonStartAlarmMedium.setBackgroundColor(Color.rgb(68, 68, 68));
             buttonStartAlarmHard.setBackgroundColor(Color.GRAY);
+
             seekBarAlarmTime.setProgress(480);
 
             timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
+                @Override public void onTick(long millisUntilFinished) {
                     updateTimer((int) millisUntilFinished / 1000);
                 }
 
-                @Override
-                public void onFinish() {
+                @Override public void onFinish() {
                     mp = MediaPlayer.create(getApplicationContext(), R.raw.alarmsound);
                     mp.start();
                     resetTimer();
@@ -207,8 +242,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
+    @Override protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
@@ -216,17 +250,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //set backgrounds
-        getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
-        //getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+        //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
 
         //variables
         seekBarAlarmTime = findViewById(R.id.seekBarAlarmTime);
         textViewCounter = findViewById(R.id.textViewCounter);
         textViewSoundOnOff = findViewById(R.id.textViewSoundOnOff);
         buttonStartAlarm = findViewById(R.id.buttonStartAlarm);
-        buttonStartAlarmRare = findViewById(R.id.buttonStartAlarmRare);
-        buttonStartAlarmMedium = findViewById(R.id.buttonStartAlarmMedium);
-        buttonStartAlarmHard = findViewById(R.id.buttonStartAlarmHard);
+        buttonStartAlarmRare = findViewById(R.id.buttonSoft);
+        buttonStartAlarmMedium = findViewById(R.id.buttonMedium);
+        buttonStartAlarmHard = findViewById(R.id.buttonHard);
 
         //set seekbar settings
         seekBarAlarmTime.setMax(600);

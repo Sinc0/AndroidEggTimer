@@ -1,105 +1,330 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Main Activity -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#ffd880">
     <!-- android:background="@drawable/browneggs2642201" -->
 
-    <SeekBar
-        android:id="@+id/seekBarAlarmTime"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewCounter"
+    <!-- Tab 1: Timer -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Tab1"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewCounter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0:00"
-        android:textColor="@android:color/black"
-        android:textSize="62sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        tools:visibility="visible">
 
-    <Button
-        android:id="@+id/buttonStartAlarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="#E0DADA"
-        android:onClick="onClickStartAlarm"
-        android:text="Timer"
-        android:textColor="@android:color/black"
-        android:visibility="visible"
+        <!-- LL0 -->
+        <LinearLayout
+            android:id="@+id/LL0"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/LL1"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Slider -->
+            <SeekBar
+                android:id="@+id/seekBarAlarmTime"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Countdown -->
+            <TextView
+                android:id="@+id/textViewCounter"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="13dp"
+                android:text="0:00"
+                android:textColor="#000000"
+                android:textSize="62sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@id/seekBarAlarmTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <!-- LL1 -->
+        <LinearLayout
+            android:id="@+id/LL1"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LL0">
+
+            <Button
+                android:id="@+id/buttonStartAlarm"
+                style="@android:style/Widget.Button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="#ffffff"
+                android:onClick="onClickStartAlarm"
+                android:text="Custom"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5" />
+
+            <Button
+                android:id="@+id/buttonSuperSoft"
+                style="@android:style/Widget.Button"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:capitalize="none"
+                android:onClick="onClickStartAlarmRare"
+                android:text="Super Soft"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonExtraSoft"
+                style="@android:style/Widget.Button"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="#000000"
+                android:capitalize="none"
+                android:onClick="onClickStartAlarmRare"
+                android:text="Extra Soft"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonSoft"
+                style="@android:style/Widget.Button"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="#000000"
+                android:onClick="onClickStartAlarmRare"
+                android:text="Soft"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5" />
+
+            <Button
+                android:id="@+id/buttonMediumSoft"
+                style="@android:style/Widget.Button"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="#000000"
+                android:onClick="onClickStartAlarmMedium"
+                android:text="Medium Soft"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonMedium"
+                style="@android:style/Widget.Button"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="#000000"
+                android:onClick="onClickStartAlarmMedium"
+                android:text="Medium"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonMediumHard"
+                style="@android:style/Widget.Button"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="#000000"
+                android:onClick="onClickStartAlarmMedium"
+                android:text="Medium Hard"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5" />
+
+            <Button
+                android:id="@+id/buttonHard"
+                style="@android:style/Widget.Button"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="#000000"
+                android:onClick="onClickStartHard"
+                android:text="Hard"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonExtraHard"
+                style="@android:style/Widget.Button"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="#000000"
+                android:onClick="onClickStartHard"
+                android:text="Extra Hard"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonSuperHard"
+                style="@android:style/Widget.Button"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="#000000"
+                android:onClick="onClickStartHard"
+                android:text="Super Hard"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5" />
+
+            <!-- Sound On/Off -->
+            <TextView
+                android:id="@+id/textViewSoundOnOff"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:onClick="onClicktextViewSoundOnOff"
+                android:text="Sound On"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Tab 2: Settings -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Tab2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#383838"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCounter" />
+        app:layout_constraintTop_toTopOf="parent"></androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/buttonStartAlarmRare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#E0DADA"
-        android:onClick="onClickStartAlarmRare"
-        android:text="Rare"
-        android:textColor="@android:color/black"
+    <!-- Tab 3: About -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Tab3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FF383838"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStartAlarm" />
+        app:layout_constraintTop_toTopOf="parent"></androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/buttonStartAlarmMedium"
-        android:layout_width="wrap_content"
+    <!-- Bottom Menu -->
+    <LinearLayout
+        android:id="@+id/BottomMenu"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#E0DADA"
-        android:onClick="onClickStartAlarmMedium"
-        android:text="Medium"
-        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/Tab1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStartAlarmRare" />
+        app:layout_constraintTop_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/buttonStartAlarmHard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#E0DADA"
-        android:onClick="onClickStartHard"
-        android:text="Hard"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStartAlarmMedium" />
+        <Button
+            android:id="@+id/buttonBottom1"
+            android:layout_width="58dp"
+            android:layout_height="54dp"
+            android:background="@drawable/icon1black"
+            android:onClick=""
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
 
-    <TextView
-        android:id="@+id/textViewSoundOnOff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="onClicktextViewSoundOnOff"
-        android:text="Sound is On"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/buttonBottom2"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/icon2black"
+            android:onClick=""
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonBottom3"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/icon3black"
+            android:onClick=""
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
