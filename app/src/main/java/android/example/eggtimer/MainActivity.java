@@ -3,6 +3,9 @@ package android.example.eggtimer;
 
 //includes
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -21,13 +24,22 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewSoundOnOff;
     SeekBar seekBarAlarmTime;
     Button buttonStartAlarm;
-    Button buttonStartAlarmRare;
-    Button buttonStartAlarmMedium;
-    Button buttonStartAlarmHard;
+    Button buttonSuperSoft;
+    Button buttonExtraSoft;
+    Button buttonSoft;
+    Button buttonMediumSoft;
+    Button buttonMedium;
+    Button buttonMediumHard;
+    Button buttonHard;
+    Button buttonExtraHard;
+    Button buttonSuperHard;
     CountDownTimer timer;
     MediaPlayer mp;
     Boolean counterIsActive = false;
     Boolean soundOn = true;
+    int visible = 0;
+    int invisible = 4;
+    int gone = 8;
 
     //functions
     public void resetTimer()
@@ -43,13 +55,22 @@ public class MainActivity extends AppCompatActivity {
         buttonStartAlarm.setText("Start");
         //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
 
-        buttonStartAlarm.setBackgroundColor(Color.rgb(224, 218, 218));
-        buttonStartAlarmRare.setBackgroundColor(Color.rgb(224, 218, 218));
-        buttonStartAlarmMedium.setBackgroundColor(Color.rgb(224, 218, 218));
-        buttonStartAlarmHard.setBackgroundColor(Color.rgb(224, 218, 218));
+        //reset UI
+        buttonStartAlarm.setBackgroundColor(0xFF000000);
+        textViewCounter.setVisibility(invisible);
+        buttonSuperSoft.setVisibility(visible);
+        buttonExtraSoft.setVisibility(visible);
+        buttonSoft.setVisibility(visible);
+        buttonMediumSoft.setVisibility(visible);
+        buttonMedium.setVisibility(visible);
+        buttonMediumHard.setVisibility(visible);
+        buttonHard.setVisibility(visible);
+        buttonExtraHard.setVisibility(visible);
+        buttonSuperHard.setVisibility(visible);
 
         counterIsActive = false;
     }
+
 
     public void updateTimer(int secondsLeft)
     {
@@ -68,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         seekBarAlarmTime.setProgress(secondsLeft);
     }
+
 
     public void onClicktextViewSoundOnOff(View view)
     {
@@ -88,35 +110,63 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickStartAlarm(View view)
+
+    @SuppressLint("WrongConstant")
+    public void startTimer(View view)
     {
-        if (counterIsActive == true)
-        {
-            resetTimer();
-        }
+        if (counterIsActive == true) { resetTimer(); }
         else
         {
+            //variables
+            String buttonTag = view.getTag().toString();
+            counterIsActive = true;
+
             //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
-            counterIsActive = true;
 
             seekBarAlarmTime.setEnabled(false);
 
             buttonStartAlarm.setText("Stop");
 
-            buttonStartAlarm.setBackgroundColor(Color.GRAY);
-            buttonStartAlarmRare.setBackgroundColor(Color.rgb(224, 218, 218));
-            buttonStartAlarmMedium.setBackgroundColor(Color.rgb(224, 218, 218));
-            buttonStartAlarmHard.setBackgroundColor(Color.rgb(224, 218, 218));
+            //buttonSoft.setBackgroundColor(0x00000000);
 
-            timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
-                @Override public void onTick(long millisUntilFinished) {
+            //reset UI
+            textViewCounter.setVisibility(visible);
+            buttonSuperSoft.setVisibility(visible);
+            buttonExtraSoft.setVisibility(invisible);
+            buttonSoft.setVisibility(invisible);
+            buttonMediumSoft.setVisibility(invisible);
+            buttonMedium.setVisibility(invisible);
+            buttonMediumHard.setVisibility(invisible);
+            buttonHard.setVisibility(invisible);
+            buttonExtraHard.setVisibility(invisible);
+            buttonSuperHard.setVisibility(invisible);
+            textViewCounter.setTextColor(0xff000000);
+
+            //update UI
+            if(buttonTag.equals("1")) { seekBarAlarmTime.setProgress(120); buttonSuperSoft.setText("Super Soft"); }
+            else if(buttonTag.equals("2")) { seekBarAlarmTime.setProgress(180); buttonSuperSoft.setText("Extra Soft"); }
+            else if(buttonTag.equals("3")) { seekBarAlarmTime.setProgress(300); buttonSuperSoft.setText("Soft"); }
+            else if(buttonTag.equals("4")) { seekBarAlarmTime.setProgress(420); buttonSuperSoft.setText("Medium Soft"); }
+            else if(buttonTag.equals("5")) { seekBarAlarmTime.setProgress(540); buttonSuperSoft.setText("Temp"); }
+            else if(buttonTag.equals("6")) { seekBarAlarmTime.setProgress(660); buttonSuperSoft.setText("Temp"); }
+            else if(buttonTag.equals("7")) { seekBarAlarmTime.setProgress(780); buttonSuperSoft.setText("Temp"); }
+            else if(buttonTag.equals("8")) { seekBarAlarmTime.setProgress(900); buttonSuperSoft.setText("Temp"); }
+            else if(buttonTag.equals("9")) { seekBarAlarmTime.setProgress(1020); buttonSuperSoft.setText("Temp"); }
+
+
+            timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000)
+            {
+                @Override public void onTick(long millisUntilFinished)
+                {
                     updateTimer((int) millisUntilFinished / 1000);
                 }
 
-                @Override public void onFinish() {
+                @Override public void onFinish()
+                {
                     mp = MediaPlayer.create(getApplicationContext(), R.raw.alarmsound);
                     mp.start();
-                    resetTimer();
+                    //resetTimer();
+                    textViewCounter.setTextColor(0xffff0000);
                     Log.i("Tag:", "Alarm Finished");
                 }
             };
@@ -125,122 +175,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onClickStartAlarmRare(View view)
+
+    public void changeTab(View view)
     {
-        if (counterIsActive == true)
-        {
-            resetTimer();
-        }
-        else
-        {
-            //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201goldorange);
-            counterIsActive = true;
+        //variables
+        String buttonTag = view.getTag().toString();
 
-            seekBarAlarmTime.setEnabled(false);
+        //widgets
+        ConstraintLayout Tab1 = findViewById(R.id.Tab1);
+        ConstraintLayout Tab2 = findViewById(R.id.Tab2);
+        ConstraintLayout Tab3 = findViewById(R.id.Tab3);
 
-            buttonStartAlarm.setText("Stop");
+        //reset UI
+        Tab1.setVisibility(invisible);
+        Tab2.setVisibility(invisible);
+        Tab3.setVisibility(invisible);
 
-            buttonStartAlarm.setBackgroundColor(Color.rgb(224, 218, 218));
-            buttonStartAlarmRare.setBackgroundColor(Color.GRAY);
-            buttonStartAlarmMedium.setBackgroundColor(Color.rgb(224, 218, 218));
-            buttonStartAlarmHard.setBackgroundColor(Color.rgb(224, 218, 218));
-
-            seekBarAlarmTime.setProgress(180);
-
-            timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
-                @Override public void onTick(long millisUntilFinished) {
-                    updateTimer((int) millisUntilFinished / 1000);
-                }
-
-                @Override public void onFinish() {
-                    mp = MediaPlayer.create(getApplicationContext(), R.raw.alarmsound);
-                    mp.start();
-                    resetTimer();
-                    Log.i("Tag:", "Alarm Finished");
-                }
-            };
-
-            timer.start();
-        }
+        //update UI
+        if(buttonTag.equals("timer")) { Tab1.setVisibility(visible); }
+        else if(buttonTag.equals("settings")) { Tab2.setVisibility(visible); }
+        else if(buttonTag.equals("about")) { Tab3.setVisibility(visible); }
     }
 
-    public void onClickStartAlarmMedium(View view)
-    {
-        if (counterIsActive == true)
-        {
-            resetTimer();
-        }
-        else
-        {
-            //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201summertime);
-            counterIsActive = true;
-
-            seekBarAlarmTime.setEnabled(false);
-
-            buttonStartAlarm.setText("Stop");
-
-            buttonStartAlarm.setBackgroundColor(Color.rgb(224, 218, 218));
-            buttonStartAlarmRare.setBackgroundColor(Color.rgb(224, 218, 218));
-            buttonStartAlarmMedium.setBackgroundColor(Color.GRAY);
-            buttonStartAlarmHard.setBackgroundColor(Color.rgb(224, 218, 218));
-
-            seekBarAlarmTime.setProgress(300);
-
-            timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
-                @Override public void onTick(long millisUntilFinished) {
-                    updateTimer((int) millisUntilFinished / 1000);
-                }
-
-                @Override public void onFinish() {
-                    mp = MediaPlayer.create(getApplicationContext(), R.raw.alarmsound);
-                    mp.start();
-                    resetTimer();
-                    Log.i("Tag:", "Alarm Finished");
-                }
-            };
-
-            timer.start();
-        }
-    }
-
-    public void onClickStartHard(View view) {
-        if (counterIsActive == true)
-        {
-            resetTimer();
-        }
-        else
-        {
-            //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201moonlight);
-
-            counterIsActive = true;
-
-            seekBarAlarmTime.setEnabled(false);
-
-            buttonStartAlarm.setText("Stop");
-
-            buttonStartAlarm.setBackgroundColor(Color.rgb(118, 118, 118));
-            buttonStartAlarmRare.setBackgroundColor(Color.rgb(42, 42, 42));
-            buttonStartAlarmMedium.setBackgroundColor(Color.rgb(68, 68, 68));
-            buttonStartAlarmHard.setBackgroundColor(Color.GRAY);
-
-            seekBarAlarmTime.setProgress(480);
-
-            timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000) {
-                @Override public void onTick(long millisUntilFinished) {
-                    updateTimer((int) millisUntilFinished / 1000);
-                }
-
-                @Override public void onFinish() {
-                    mp = MediaPlayer.create(getApplicationContext(), R.raw.alarmsound);
-                    mp.start();
-                    resetTimer();
-                    Log.i("Tag:", "Alarm Finished");
-                }
-            };
-
-            timer.start();
-        }
-    }
 
     @Override protected void onCreate(Bundle savedInstanceState)
     {
@@ -252,18 +208,26 @@ public class MainActivity extends AppCompatActivity {
         //set backgrounds
         //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
 
-        //variables
+        //widgets
         seekBarAlarmTime = findViewById(R.id.seekBarAlarmTime);
         textViewCounter = findViewById(R.id.textViewCounter);
         textViewSoundOnOff = findViewById(R.id.textViewSoundOnOff);
         buttonStartAlarm = findViewById(R.id.buttonStartAlarm);
-        buttonStartAlarmRare = findViewById(R.id.buttonSoft);
-        buttonStartAlarmMedium = findViewById(R.id.buttonMedium);
-        buttonStartAlarmHard = findViewById(R.id.buttonHard);
+        buttonSuperSoft = findViewById(R.id.buttonSuperSoft);
+        buttonExtraSoft = findViewById(R.id.buttonExtraSoft);
+        buttonSoft = findViewById(R.id.buttonSoft);
+        buttonMediumSoft = findViewById(R.id.buttonMediumSoft);
+        buttonMedium = findViewById(R.id.buttonMedium);
+        buttonMediumHard = findViewById(R.id.buttonMediumHard);
+        buttonHard = findViewById(R.id.buttonHard);
+        buttonExtraHard = findViewById(R.id.buttonExtraHard);
+        buttonSuperHard = findViewById(R.id.buttonSuperHard);
 
         //set seekbar settings
-        seekBarAlarmTime.setMax(600);
+        seekBarAlarmTime.setMax(1200);
         seekBarAlarmTime.setProgress(0);
+
+        //set seekbar on listener
         seekBarAlarmTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
             @Override
