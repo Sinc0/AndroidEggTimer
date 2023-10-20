@@ -1,27 +1,35 @@
 //namespace
 package android.example.eggtimer;
 
+
 //includes
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
-import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.ImageView;
+import android.annotation.SuppressLint;
 
-//main class
+
+//main
 public class MainActivity extends AppCompatActivity {
     //variables
+    Boolean counterIsActive = false;
+    Boolean soundOn = true;
+    int visible = 0;
+    int invisible = 4;
+    int gone = 8;
+
+    //widgets
     TextView textViewCounter;
-    TextView textViewSoundOnOff;
     SeekBar seekBarAlarmTime;
     Button buttonStartAlarm;
     Button buttonSuperSoft;
@@ -34,28 +42,34 @@ public class MainActivity extends AppCompatActivity {
     Button buttonExtraHard;
     Button buttonSuperHard;
     CountDownTimer timer;
-    MediaPlayer mp;
-    Boolean counterIsActive = false;
-    Boolean soundOn = true;
-    int visible = 0;
-    int invisible = 4;
-    int gone = 8;
+    MediaPlayer alarm;
+    ConstraintLayout Tab1;
+    ConstraintLayout Tab2;
+    ConstraintLayout Tab3;
+    ScrollView scrollviewAlarmButtons;
+    LinearLayout bottomMenu;
+
 
     //functions
     public void resetTimer()
     {
-        textViewCounter.setText("0:00");
+        //reset alarm sound
+        alarm.reset();
 
-        seekBarAlarmTime.setEnabled(true);
-
+        //reset timer
         timer.cancel();
 
+        //reset seekbar
+        seekBarAlarmTime.setEnabled(true);
         seekBarAlarmTime.setProgress(0);
 
-        buttonStartAlarm.setText("Start");
-        //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
+        //reset counter status
+        counterIsActive = false;
 
         //reset UI
+        buttonStartAlarm.setText("Start");
+        textViewCounter.setText("0:00");
+        buttonSuperSoft.setText("Super Soft");
         buttonStartAlarm.setBackgroundColor(0xFF000000);
         textViewCounter.setVisibility(invisible);
         buttonSuperSoft.setVisibility(visible);
@@ -67,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
         buttonHard.setVisibility(visible);
         buttonExtraHard.setVisibility(visible);
         buttonSuperHard.setVisibility(visible);
-
-        counterIsActive = false;
+        bottomMenu.setVisibility(visible);
     }
 
 
@@ -77,57 +90,31 @@ public class MainActivity extends AppCompatActivity {
         //variables
         int minutes = secondsLeft / 60;
         int seconds = secondsLeft - (minutes * 60);
-        String m = Integer.toString(minutes);
-        String s = Integer.toString(seconds);
+        String currentMinute = Integer.toString(minutes);
+        String currentSeconds = Integer.toString(seconds);
 
-        if (s.length() == 1)
-        {
-            s = "0" + s;
-        }
+        //format timer string
+        if (currentSeconds.length() == 1)
+        { currentSeconds = "0" + currentSeconds; }
 
-        textViewCounter.setText(m + ":" + s);
-
+        //update UI
+        textViewCounter.setText(currentMinute + ":" + currentSeconds);
         seekBarAlarmTime.setProgress(secondsLeft);
     }
 
 
-    public void onClicktextViewSoundOnOff(View view)
+    @SuppressLint("WrongConstant") public void startTimer(View view)
     {
-        //debug
-        Log.i("Tag", "Clicked");
+        if (counterIsActive == true)
+        { resetTimer(); }
 
-        if (soundOn == true)
-        {
-            mp.stop();
-            textViewSoundOnOff.setText("Sound is Off");
-            soundOn = false;
-        }
-        else if (soundOn == false)
-        {
-            textViewSoundOnOff.setText("Sound is On");
-            soundOn = true;
-        }
-
-    }
-
-
-    @SuppressLint("WrongConstant")
-    public void startTimer(View view)
-    {
-        if (counterIsActive == true) { resetTimer(); }
         else
         {
             //variables
             String buttonTag = view.getTag().toString();
             counterIsActive = true;
-
-            //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
-
             seekBarAlarmTime.setEnabled(false);
-
             buttonStartAlarm.setText("Stop");
-
-            //buttonSoft.setBackgroundColor(0x00000000);
 
             //reset UI
             textViewCounter.setVisibility(visible);
@@ -140,37 +127,42 @@ public class MainActivity extends AppCompatActivity {
             buttonHard.setVisibility(invisible);
             buttonExtraHard.setVisibility(invisible);
             buttonSuperHard.setVisibility(invisible);
+            bottomMenu.setVisibility(invisible);
             textViewCounter.setTextColor(0xff000000);
+            scrollviewAlarmButtons.scrollTo(0,0);
 
             //update UI
-            if(buttonTag.equals("1")) { seekBarAlarmTime.setProgress(120); buttonSuperSoft.setText("Super Soft"); }
+            if(buttonTag.equals("1")) { seekBarAlarmTime.setProgress(3); buttonSuperSoft.setText("Super Soft"); }
             else if(buttonTag.equals("2")) { seekBarAlarmTime.setProgress(180); buttonSuperSoft.setText("Extra Soft"); }
             else if(buttonTag.equals("3")) { seekBarAlarmTime.setProgress(300); buttonSuperSoft.setText("Soft"); }
             else if(buttonTag.equals("4")) { seekBarAlarmTime.setProgress(420); buttonSuperSoft.setText("Medium Soft"); }
-            else if(buttonTag.equals("5")) { seekBarAlarmTime.setProgress(540); buttonSuperSoft.setText("Temp"); }
-            else if(buttonTag.equals("6")) { seekBarAlarmTime.setProgress(660); buttonSuperSoft.setText("Temp"); }
-            else if(buttonTag.equals("7")) { seekBarAlarmTime.setProgress(780); buttonSuperSoft.setText("Temp"); }
-            else if(buttonTag.equals("8")) { seekBarAlarmTime.setProgress(900); buttonSuperSoft.setText("Temp"); }
-            else if(buttonTag.equals("9")) { seekBarAlarmTime.setProgress(1020); buttonSuperSoft.setText("Temp"); }
+            else if(buttonTag.equals("5")) { seekBarAlarmTime.setProgress(540); buttonSuperSoft.setText("Medium"); }
+            else if(buttonTag.equals("6")) { seekBarAlarmTime.setProgress(660); buttonSuperSoft.setText("Medium Hard"); }
+            else if(buttonTag.equals("7")) { seekBarAlarmTime.setProgress(780); buttonSuperSoft.setText("Hard"); }
+            else if(buttonTag.equals("8")) { seekBarAlarmTime.setProgress(900); buttonSuperSoft.setText("Extra Hard"); }
+            else if(buttonTag.equals("9")) { seekBarAlarmTime.setProgress(1020); buttonSuperSoft.setText("Super Hard"); }
 
-
+            //set timer
             timer = new CountDownTimer(seekBarAlarmTime.getProgress() * 1000 + 100, 1000)
             {
                 @Override public void onTick(long millisUntilFinished)
-                {
-                    updateTimer((int) millisUntilFinished / 1000);
-                }
+                { updateTimer((int) millisUntilFinished / 1000); }
 
                 @Override public void onFinish()
                 {
-                    mp = MediaPlayer.create(getApplicationContext(), R.raw.alarmsound);
-                    mp.start();
-                    //resetTimer();
+                    //start alarm sound
+                    alarm = MediaPlayer.create(getApplicationContext(), R.raw.beep);
+                    alarm.start();
+
+                    //set alarm digits to red
                     textViewCounter.setTextColor(0xffff0000);
-                    Log.i("Tag:", "Alarm Finished");
+
+                    //debug
+                    //Log.i("Tag:", "Alarm Finished");
                 }
             };
 
+            //start timer
             timer.start();
         }
     }
@@ -180,11 +172,6 @@ public class MainActivity extends AppCompatActivity {
     {
         //variables
         String buttonTag = view.getTag().toString();
-
-        //widgets
-        ConstraintLayout Tab1 = findViewById(R.id.Tab1);
-        ConstraintLayout Tab2 = findViewById(R.id.Tab2);
-        ConstraintLayout Tab3 = findViewById(R.id.Tab3);
 
         //reset UI
         Tab1.setVisibility(invisible);
@@ -200,18 +187,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override protected void onCreate(Bundle savedInstanceState)
     {
+        //on create
         super.onCreate(savedInstanceState);
 
         //set startup activity
         setContentView(R.layout.activity_main);
 
-        //set backgrounds
-        //getWindow().setBackgroundDrawableResource(R.drawable.browneggs2642201);
+        //variables
+        alarm = MediaPlayer.create(getApplicationContext(), R.raw.beep);
 
         //widgets
         seekBarAlarmTime = findViewById(R.id.seekBarAlarmTime);
         textViewCounter = findViewById(R.id.textViewCounter);
-        textViewSoundOnOff = findViewById(R.id.textViewSoundOnOff);
         buttonStartAlarm = findViewById(R.id.buttonStartAlarm);
         buttonSuperSoft = findViewById(R.id.buttonSuperSoft);
         buttonExtraSoft = findViewById(R.id.buttonExtraSoft);
@@ -222,22 +209,22 @@ public class MainActivity extends AppCompatActivity {
         buttonHard = findViewById(R.id.buttonHard);
         buttonExtraHard = findViewById(R.id.buttonExtraHard);
         buttonSuperHard = findViewById(R.id.buttonSuperHard);
+        Tab1 = findViewById(R.id.Tab1);
+        Tab2 = findViewById(R.id.Tab2);
+        Tab3 = findViewById(R.id.Tab3);
+        scrollviewAlarmButtons = findViewById(R.id.scrollviewAlarmButtons);
+        bottomMenu = findViewById(R.id.BottomMenu);
 
         //set seekbar settings
         seekBarAlarmTime.setMax(1200);
         seekBarAlarmTime.setProgress(0);
 
-        //set seekbar on listener
+        //set seekbar on listeners
         seekBarAlarmTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
-            {
-                updateTimer(progress);
-            }
-
+            @Override public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            { updateTimer(progress); }
             @Override public void onStartTrackingTouch(SeekBar seekBar) { }
-
             @Override public void onStopTrackingTouch(SeekBar seekBar) { }
         });
     }
