@@ -2,268 +2,269 @@
 
 <!-- Main Activity -->
 <androidx.constraintlayout.widget.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="#ffd880">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffd880">
 
     <!-- Tab 1: Timer -->
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/Tab1"
-    android:layout_width="match_parent"
-    android:layout_height="490dp"
-    android:layout_marginBottom="40dp"
-    android:visibility="visible"
-    app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
-        <!-- LL0 -->
-        <LinearLayout
-        android:id="@+id/LL0"
+        android:id="@+id/Tab1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/LL1"
+        android:layout_height="490dp"
+        android:layout_marginBottom="40dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-            <!-- Slider -->
-            <SeekBar
-            android:id="@+id/seekBarAlarmTime"
-            android:layout_width="350dp"
+        <!-- LL0 -->
+        <LinearLayout
+            android:id="@+id/LL0"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/LL1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Slider -->
+            <SeekBar
+                android:id="@+id/seekBarAlarmTime"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!-- Countdown -->
             <TextView
-            android:id="@+id/textViewCounter"
-            android:layout_width="wrap_content"
-            android:layout_height="82dp"
-            android:gravity="center"
-            android:paddingBottom="0dp"
-            android:text="0:00"
-            android:textColor="#000000"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@id/seekBarAlarmTime"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/textViewCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:paddingBottom="0dp"
+                android:text="0:00"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/seekBarAlarmTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
 
         <!-- LL1 -->
         <ScrollView
-        android:id="@+id/scrollviewAlarmButtons"
-        android:layout_width="match_parent"
-        android:layout_height="330dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-            android:id="@+id/LL1"
+            android:id="@+id/scrollviewAlarmButtons"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
+            android:layout_height="330dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LL0">
+            app:layout_constraintTop_toTopOf="parent">
 
-
-                <Button
-                android:id="@+id/buttonStartAlarm"
-                style="@android:style/Widget.Button"
-                android:layout_width="120dp"
+            <LinearLayout
+                android:id="@+id/LL1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:background="#ffffff"
-                android:onClick=""
-                android:text="Custom"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:visibility="gone"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LL0">
+
 
                 <Button
-                android:id="@+id/buttonSuperSoft"
-                style="@android:style/Widget.Button"
-                android:layout_width="160dp"
-                android:layout_height="49dp"
-                android:background="#000000"
-                android:capitalize="none"
-                android:fontFamily="sans-serif-medium"
-                android:onClick="startTimer"
-                android:tag="1"
-                android:text="Super Soft"
-                android:textColor="#ffd880"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                tools:visibility="visible" />
+                    android:id="@+id/buttonStartAlarm"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:background="#ffffff"
+                    android:onClick=""
+                    android:text="Custom"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5" />
 
                 <Button
-                android:id="@+id/buttonExtraSoft"
-                style="@android:style/Widget.Button"
-                android:layout_width="160dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="2dp"
-                android:background="#000000"
-                android:capitalize="none"
-                android:fontFamily="sans-serif-medium"
-                android:onClick="startTimer"
-                android:tag="2"
-                android:text="Extra Soft"
-                android:textColor="#ffd880"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                tools:visibility="visible" />
+                    android:id="@+id/buttonSuperSoft"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="160dp"
+                    android:layout_height="49dp"
+                    android:background="#000000"
+                    android:capitalize="none"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="startTimer"
+                    android:tag="1"
+                    android:text="Super Soft"
+                    android:textColor="#ffd880"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    tools:visibility="visible" />
 
                 <Button
-                android:id="@+id/buttonSoft"
-                style="@android:style/Widget.Button"
-                android:layout_width="160dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="2dp"
-                android:background="#000000"
-                android:fontFamily="sans-serif-medium"
-                android:onClick="startTimer"
-                android:tag="3"
-                android:text="Soft"
-                android:textColor="#ffd880"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5" />
+                    android:id="@+id/buttonExtraSoft"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="160dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#000000"
+                    android:capitalize="none"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="startTimer"
+                    android:tag="2"
+                    android:text="Extra Soft"
+                    android:textColor="#ffd880"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    tools:visibility="visible" />
 
                 <Button
-                android:id="@+id/buttonMediumSoft"
-                style="@android:style/Widget.Button"
-                android:layout_width="160dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="2dp"
-                android:background="#000000"
-                android:fontFamily="sans-serif-medium"
-                android:onClick="startTimer"
-                android:tag="4"
-                android:text="Medium Soft"
-                android:textColor="#ffd880"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                tools:visibility="visible" />
+                    android:id="@+id/buttonSoft"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="160dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#000000"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="startTimer"
+                    android:tag="3"
+                    android:text="Soft"
+                    android:textColor="#ffd880"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5" />
 
                 <Button
-                android:id="@+id/buttonMedium"
-                style="@android:style/Widget.Button"
-                android:layout_width="160dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="2dp"
-                android:background="#000000"
-                android:fontFamily="sans-serif-medium"
-                android:onClick="startTimer"
-                android:tag="5"
-                android:text="Medium"
-                android:textColor="#ffd880"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                tools:visibility="visible" />
+                    android:id="@+id/buttonMediumSoft"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="160dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#000000"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="startTimer"
+                    android:tag="4"
+                    android:text="Medium Soft"
+                    android:textColor="#ffd880"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    tools:visibility="visible" />
 
                 <Button
-                android:id="@+id/buttonMediumHard"
-                style="@android:style/Widget.Button"
-                android:layout_width="160dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="2dp"
-                android:background="#000000"
-                android:fontFamily="sans-serif-medium"
-                android:onClick="startTimer"
-                android:tag="6"
-                android:text="Medium Hard"
-                android:textColor="#ffd880"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5" />
+                    android:id="@+id/buttonMedium"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="160dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#000000"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="startTimer"
+                    android:tag="5"
+                    android:text="Medium"
+                    android:textColor="#ffd880"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    tools:visibility="visible" />
 
                 <Button
-                android:id="@+id/buttonHard"
-                style="@android:style/Widget.Button"
-                android:layout_width="160dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="2dp"
-                android:background="#000000"
-                android:fontFamily="sans-serif-medium"
-                android:onClick="startTimer"
-                android:tag="7"
-                android:text="Hard"
-                android:textColor="#ffd880"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                tools:visibility="visible" />
+                    android:id="@+id/buttonMediumHard"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="160dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#000000"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="startTimer"
+                    android:tag="6"
+                    android:text="Medium Hard"
+                    android:textColor="#ffd880"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5" />
 
                 <Button
-                android:id="@+id/buttonExtraHard"
-                style="@android:style/Widget.Button"
-                android:layout_width="160dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="2dp"
-                android:background="#000000"
-                android:fontFamily="sans-serif-medium"
-                android:onClick="startTimer"
-                android:tag="8"
-                android:text="Extra Hard"
-                android:textColor="#ffd880"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                tools:visibility="visible" />
+                    android:id="@+id/buttonHard"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="160dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#000000"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="startTimer"
+                    android:tag="7"
+                    android:text="Hard"
+                    android:textColor="#ffd880"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    tools:visibility="visible" />
 
                 <Button
-                android:id="@+id/buttonSuperHard"
-                style="@android:style/Widget.Button"
-                android:layout_width="160dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="2dp"
-                android:background="#000000"
-                android:fontFamily="sans-serif-medium"
-                android:onClick="startTimer"
-                android:tag="9"
-                android:text="Super Hard"
-                android:textColor="#ffd880"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5" />
+                    android:id="@+id/buttonExtraHard"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="160dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#000000"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="startTimer"
+                    android:tag="8"
+                    android:text="Extra Hard"
+                    android:textColor="#ffd880"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    tools:visibility="visible" />
+
+                <Button
+                    android:id="@+id/buttonSuperHard"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="160dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#000000"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="startTimer"
+                    android:tag="9"
+                    android:text="Super Hard"
+                    android:textColor="#ffd880"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5" />
 
 
             </LinearLayout>
@@ -272,117 +273,283 @@ android:background="#ffd880">
 
     <!-- Tab 2: Settings -->
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/Tab2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffd880"
-    android:visibility="gone"
-    app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-        android:id="@+id/textView"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="top|left"
-        android:paddingLeft="80dp"
-        android:text="Settings"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:id="@+id/Tab2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffd880"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewSettingsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center|top"
+                android:text="Settings"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewThemeTitle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="-4dp"
+                android:layout_marginTop="11dp"
+                android:gravity="left"
+                android:text="Theme"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonThemeOriginal"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#000000"
+                    android:onClick="changeTheme"
+                    android:tag="Original"
+                    android:text="Original"
+                    android:textColor="#ffd880"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/buttonThemeInverted"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:background="#000000"
+                    android:onClick="changeTheme"
+                    android:tag="Inverted"
+                    android:text="Inverted"
+                    android:textColor="#ffd880"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/buttonThemeBlueberry"
+                    style="@android:style/Widget.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#000000"
+                    android:onClick="changeTheme"
+                    android:tag="Blueberry"
+                    android:text="Blueberry"
+                    android:textColor="#ffd880"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Tab 3: About -->
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/Tab3"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffd880"
-    android:visibility="gone"
-    app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-        android:id="@+id/textView2"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="top|left"
-        android:paddingLeft="80dp"
-        android:text="About"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:id="@+id/Tab3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffd880"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewAboutTitle"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center|top"
+            android:text="About"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Bottom Menu -->
     <LinearLayout
-    android:id="@+id/BottomMenu"
-    android:layout_width="400dp"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
-    android:gravity="center"
-    android:orientation="horizontal"
-    app:layout_constraintBottom_toBottomOf="@id/Tab1"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="parent">
+        android:id="@+id/BottomMenu"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/Tab1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
 
         <Button
-        android:id="@+id/buttonBottom1"
-        android:layout_width="58dp"
-        android:layout_height="52dp"
-        android:background="@drawable/icon1black"
-        android:onClick="changeTab"
-        android:tag="timer"
-        android:textColor="#ffffff"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:visibility="visible" />
+            android:id="@+id/buttonBottom1original"
+            android:layout_width="70dp"
+            android:layout_height="62dp"
+            android:background="@drawable/icon1timer"
+            android:onClick="changeTab"
+            android:tag="timer"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
 
         <Button
-        android:id="@+id/buttonBottom2"
-        android:layout_width="49dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginLeft="34dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginRight="34dp"
-        android:background="@drawable/icon2black"
-        android:onClick="changeTab"
-        android:tag="settings"
-        android:textColor="#ffffff"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:visibility="visible" />
+            android:id="@+id/buttonBottom1inverted"
+            android:layout_width="70dp"
+            android:layout_height="62dp"
+            android:background="@drawable/icon1inverted"
+            android:onClick="changeTab"
+            android:tag="timer"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone" />
 
         <Button
-        android:id="@+id/buttonBottom3"
-        android:layout_width="49dp"
-        android:layout_height="49dp"
-        android:background="@drawable/icon3black"
-        android:onClick="changeTab"
-        android:tag="about"
-        android:textColor="#ffffff"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:visibility="visible" />
+            android:id="@+id/buttonBottom1blueberry"
+            android:layout_width="70dp"
+            android:layout_height="62dp"
+            android:background="@drawable/icon1blueberry"
+            android:onClick="changeTab"
+            android:tag="timer"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone" />
+
+        <Button
+            android:id="@+id/buttonBottom2original"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/icon2black"
+            android:onClick="changeTab"
+            android:tag="settings"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonBottom2inverted"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/icon2inverted"
+            android:onClick="changeTab"
+            android:tag="settings"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone" />
+
+        <Button
+            android:id="@+id/buttonBottom2blueberry"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/icon2white"
+            android:onClick="changeTab"
+            android:tag="settings"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone" />
+
+        <Button
+            android:id="@+id/buttonBottom3original"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/icon3black"
+            android:onClick="changeTab"
+            android:tag="about"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonBottom3inverted"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/icon3inverted"
+            android:onClick="changeTab"
+            android:tag="about"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone" />
+
+        <Button
+            android:id="@+id/buttonBottom3blueberry"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@drawable/icon3white"
+            android:onClick="changeTab"
+            android:tag="about"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
