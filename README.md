@@ -27,5 +27,5 @@
 - [XML - Bottom Menu](https://github.com/Sinc0/AndroidEggTimer/blob/master/app/src/main/res/layout/activity_main.xml#L489-L650)
 
 ### Releases
-- [Android]()
+- [Android](https://github.com/Sinc0/AndroidEggTimer/releases/tag/1.0.0)
 
