@@ -4,8 +4,8 @@
 - LoC: ~900
 - [Logo](https://github.com/Sinc0/AndroidEggTimerApp/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
 - Features:
-- \--- Select From 9 Cooking Levels
-- \--- Select From 3 Themes
+- \--- select from 9 cooking levels
+- \--- select from 3 themes
 
 ### Technologies
 - [Java](https://www.java.com/en/)
@@ -27,5 +27,5 @@
 - [XML - Bottom Menu](https://github.com/Sinc0/AndroidEggTimer/blob/master/app/src/main/res/layout/activity_main.xml#L489-L650)
 
 ### Releases
-- [Android](https://github.com/Sinc0/AndroidEggTimer/releases/tag/1.0.0)
+- [Android](https://github.com/Sinc0/AndroidEggTimer/releases/download/1.0.0/unsigned-jet-1.0.0.apk)
 
