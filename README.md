@@ -3,7 +3,6 @@
 - Description: Cook eggs with precision
 - LoC: ~900
 - [Logo](https://github.com/Sinc0/AndroidEggTimerApp/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
-###
 - Features:
 - \--- select from 9 cooking levels
 - \--- select from 3 themes
